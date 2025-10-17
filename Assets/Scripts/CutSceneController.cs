@@ -9,7 +9,7 @@ public class CutSceneController : MonoBehaviour
     public Image cutsceneImage;
     public Sprite[] cutsceneSprites;
     public float imageDuration = 30f;
-    public string nextSceneName = "Level1";
+    public string nextSceneName = "Lift";
 
     private int currentIndex = 0;
     private float timer = 0f;

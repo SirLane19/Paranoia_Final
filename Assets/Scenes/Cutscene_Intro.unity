@@ -179,7 +179,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 371f74c6dc294aa4eba4d7e52007eca2, type: 3}
   - {fileID: 21300000, guid: 70dd944ace26ff94995dc7e66552b2dc, type: 3}
   imageDuration: 2
-  nextSceneName: Level1
+  nextSceneName: Lift
 --- !u!1 &477281033
 GameObject:
   m_ObjectHideFlags: 0

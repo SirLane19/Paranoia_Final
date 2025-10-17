@@ -1,5 +1,6 @@
-﻿using UnityEngine;
+﻿using UnityEngine; 
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;  // ✅ Tambahin ini biar bisa ganti scene
 using System.Collections;
 
 public class NeedleRotator : MonoBehaviour
@@ -25,7 +26,7 @@ public class NeedleRotator : MonoBehaviour
 
     [Header("Ghost & Eye Settings")]
     public float ghostFadeStep = 0.3f;
-    public float ghostFadeOutSpeed = 1.5f; // kecepatan ghost hilang saat menang
+    public float ghostFadeOutSpeed = 1.5f;
     public float eyeCloseSpeed = 0.25f;
     public float eyeOpenSpeed = 1.2f;
 
@@ -40,7 +41,6 @@ public class NeedleRotator : MonoBehaviour
     {
         SetRandomZone();
 
-        // setup awal
         if (ghostSilhouette)
         {
             Color g = ghostSilhouette.color;
@@ -63,7 +63,6 @@ public class NeedleRotator : MonoBehaviour
     {
         if (!isActive) return;
 
-        // cek waktu dari timer
         if (timer && timer.IsTimeOver)
         {
             timer.StopTimer();
@@ -71,18 +70,15 @@ public class NeedleRotator : MonoBehaviour
             return;
         }
 
-        // rotasi jarum
         currentAngle += rotationSpeed * Time.deltaTime;
         if (currentAngle >= 360f) currentAngle -= 360f;
         needle.rotation = Quaternion.Euler(0, 0, -currentAngle);
 
-        // deteksi input
         if (Input.GetKeyDown(KeyCode.Space))
         {
             CheckHit();
         }
 
-        // efek mata (menutup perlahan selama aktif)
         if (eyeBlinkImage && isActive)
         {
             eyeAlpha -= eyeCloseSpeed * Time.deltaTime;
@@ -107,11 +103,9 @@ public class NeedleRotator : MonoBehaviour
             successCount++;
             Debug.Log($"✅ Perfect! {successCount}/{targetSuccess}");
 
-            // buka mata cepat
             StopCoroutine("FadeEye");
             StartCoroutine(FadeEye(1f, eyeOpenSpeed));
 
-            // naik speed & lanjut round
             rotationSpeed += 25f;
 
             if (successCount >= targetSuccess)
@@ -200,10 +194,13 @@ public class NeedleRotator : MonoBehaviour
         }
 
         if (eyeBlinkImage)
-            StopAllCoroutines(); // stop blink animasi
+            StopAllCoroutines();
 
         if (losePanel) losePanel.SetActive(true);
         if (winPanel) winPanel.SetActive(false);
+
+        // ✅ Tambahan: otomatis lanjut ke scene "Mirror" setelah kalah
+        StartCoroutine(LoadNextSceneAfterDelay());
     }
 
     void WinGame()
@@ -215,16 +212,17 @@ public class NeedleRotator : MonoBehaviour
         if (timer)
             timer.StopTimer();
 
-        // ghost hilang sempurna (kalau sempat muncul)
         if (ghostSilhouette)
             StartCoroutine(FadeOutGhost());
 
-        // stop kedipan mata
         if (eyeBlinkImage)
             StopAllCoroutines();
 
         if (winPanel) winPanel.SetActive(true);
         if (losePanel) losePanel.SetActive(false);
+
+        // ✅ Tambahan: otomatis lanjut ke scene "Mirror" setelah menang
+        StartCoroutine(LoadNextSceneAfterDelay());
     }
 
     IEnumerator FadeOutGhost()
@@ -236,5 +234,12 @@ public class NeedleRotator : MonoBehaviour
             ghostSilhouette.color = g;
             yield return null;
         }
+    }
+
+    // ✅ Tambahan fungsi baru buat ganti scene
+    IEnumerator LoadNextSceneAfterDelay()
+    {
+        yield return new WaitForSeconds(2f); // delay 2 detik sebelum pindah
+        SceneManager.LoadScene("Mirror");    // ganti ke nama scene tujuan kamu persis
     }
 }

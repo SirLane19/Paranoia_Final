@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Paranoia_1.sln"
+    "dotnet.defaultSolution": "Paranoia_Final.sln"
 }

@@ -172,14 +172,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cutsceneImage: {fileID: 1104301968}
   cutsceneSprites:
-  - {fileID: 21300000, guid: 9c6ccde6e48396041844588619ba42c5, type: 3}
-  - {fileID: 21300000, guid: 8c4b5d4e73ed24643adf4883f69c8647, type: 3}
-  - {fileID: 21300000, guid: 15f4699f33b0c184a82f2aabb36ae715, type: 3}
-  - {fileID: 21300000, guid: f81561b1288b92b499c82ba9c64b284d, type: 3}
-  - {fileID: 21300000, guid: 371f74c6dc294aa4eba4d7e52007eca2, type: 3}
-  - {fileID: 21300000, guid: 70dd944ace26ff94995dc7e66552b2dc, type: 3}
-  imageDuration: 2
-  nextSceneName: Cutscene_Lift
+  - {fileID: 21300000, guid: 857890d24983db14c9486becfabc9c68, type: 3}
+  - {fileID: 21300000, guid: 3a61694baa1758b45954d1ec343ba2e2, type: 3}
+  imageDuration: 2.36
+  nextSceneName: Lift
 --- !u!1 &477281033
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,7 +556,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 70dd944ace26ff94995dc7e66552b2dc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 857890d24983db14c9486becfabc9c68, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

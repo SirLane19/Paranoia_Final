@@ -116,7 +116,8 @@ public class PushBackMinigame_Lift : MonoBehaviour
         if (ghostSequence != null)
             ghostSequence.isActive = false;
 
-        SceneManager.LoadScene("Shampoo");
+        // SceneManager.LoadScene("Shampoo");
+        SceneManager.LoadScene("Cutscene_Shampoo");
 
         //enih buat nganuin tahapan selanjutnya, pindah scene kah
         //kirim skor kah
@@ -144,7 +145,8 @@ public class PushBackMinigame_Lift : MonoBehaviour
         if (ghostSequence != null)
             ghostSequence.isActive = false;
 
-        SceneManager.LoadScene("Shampoo");
+        // SceneManager.LoadScene("Shampoo");
+        SceneManager.LoadScene("Cutscene_Shampoo");
     }
 
     //IEnumerator ShowJumpscare()

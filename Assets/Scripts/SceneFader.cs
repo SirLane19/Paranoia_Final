@@ -44,8 +44,8 @@ public class SceneFader : MonoBehaviour
         fadeImage.color = c;
     }
 
-    void Update()
-    {
-        Debug.Log("Running.");   
-    }
+    // void Update()
+    // {
+    //     Debug.Log("Running.");   
+    // }
 }
